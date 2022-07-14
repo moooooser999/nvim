@@ -1,0 +1,20 @@
+#Signature
+snippet sign "Signature"
+Yours sincerely,
+
+Morris Chang
+endsnippet
+#Date
+snippet today "Date"
+`date +%F`
+endsnippet
+#Box
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+
+
