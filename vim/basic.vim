@@ -1,35 +1,43 @@
 
 " Basic Setup
 set nocompatible
-set shortmess+=I
 set number
 set relativenumber
 set laststatus=2
 set backspace=indent,eol,start
 set ignorecase
 set smartcase
+set nohlsearch
 set incsearch
 set hidden
 set mouse+=a
-set hlsearch
 set path+=**
 set t_Co=256
 set autoindent
 set cindent
 set smartindent
 set nowrap
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
 "set filetype 
 " Display all matchin files when we tab complete
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 "Insertmode
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+"let &t_SI = "\e[6 q" 
+"let &t_EI = "\e[2 q"
 " Set cursorline
 set cursorline cursorcolumn
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>cl :set cursorline! cursorcolumn!<CR>
 "Fold
 set foldmethod=syntax
 set foldlevelstart=1
@@ -63,9 +71,24 @@ command Q q
 command Wq wq
 command WQ wq
 
+
+
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+" Autoindent
+inoremap <expr> <CR> InsertMapForEnter()
+function! InsertMapForEnter()
+    if pumvisible()
+        return "\<C-y>"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+        return "\<CR>\<Esc>O"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+        return "\<CR>\<Esc>O"
+    else
+        return "\<CR>"
+    endif
+endfunction

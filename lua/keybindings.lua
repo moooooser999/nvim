@@ -11,11 +11,17 @@ map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 
 -- do not use arrow keys
-map("n","<Left>",[[:echoe "Use h"]],opt)
-map("n","<Right>",[[:echoe "Use l"]],opt)
-map("n","<Up>",[[:echoe "Use k"]],opt)
-map("n","<Down>",[[:echoe "Use j"]],opt)
+map("n","<Left>",[[:echoe "Use h"<cr>]],opt)
+map("n","<Right>",[[:echoe "Use l<cr>"]],opt)
+map("n","<Up>",[[:echoe "Use k<cr>"]],opt)
+map("n","<Down>",[[:echoe "Use j<cr>"]],opt)
 
+map("n","<A-k>",[[:m .-2<cr>==]],opt)
+map("n","<A-j>",[[:m .+1<cr>==]],opt)
+map("v","<A-k>",[[:m '<-2<cr>gv=gv]],opt)
+map("v","<A-j>",[[:m '>+1<cr>gv=gv]],opt)
+map("i","<A-k>",[[:m .-2<cr>=gi]],opt)
+map("i","<A-j>",[[:m .+1<cr>=gi]],opt)
 -- Tabs
 map("n","<C-t>",[[:tabnew<cr>]],opt)
 -- tab key
@@ -63,6 +69,8 @@ map("n", "<leader>-", ":vertical resize -5<cr>", opt)
 map("n", "<C-w>", ":bdelete!<cr>",opt)
 map("n","<C-l>",":BufferLineCycleNext<CR>",opt)
 map("n","<C-h>",":BufferLineCyclePrev<CR>",opt)
+map("n", "<A-l>",":BufferLineMoveNext<CR>",opt)
+map("n", "<A-h>",":BufferLineMovePrev<CR>",opt)
 map("n","<C-b>",":BufferLinePick<CR>",opt)
 map("n","<leader>1","<Cmd>BufferLineGoToBuffer 1<CR>",opt)
 map("n","<leader>2","<Cmd>BufferLineGoToBuffer 2<CR>",opt)
@@ -153,141 +161,9 @@ map("n", "<leader>z", ":lua require('telekasten').panel()<cr>",opt)
 map("n", "<leader>[", ":lua require('telekasten').insert_link()<cr>",opt)
 
 
---nnoremap <silent> <leader>aj <Cmd>Lspsaga diagnostic_jump_next<CR> "nnoremap <silent> <leader>j <Cmd>Lspsaga diagnostic_jump_next<CR>
---"nnoremap <silent> <Cmd>Lspsaga diagnostic_jump_next<CR>
---nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
---nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
---" scroll up hover doc
---nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
---"inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
---nnoremap <silent> <c-k> <Cmd>Lspsaga signature_help<CR>
---nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
-
---" code action
---" 智能处理，使用IDEA Alt+Enter 同样按键
---nnoremap <silent><C-Enter> <cmd>lua require('lspsaga.codeaction').code_action()<CR>
---nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
---vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-
---" 重命名 感觉没有lsp自带的功能好用，因为名称要从头输入
---nnoremap <silent><leader>rn <cmd>lua require('lspsaga.rename').rename()<CR>
---"预览定义
---nnoremap <silent> <leader>gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
---"Jump Diagnostic and Show Diagnostics
---nnoremap <silent> <leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
-
-
-local pluginKeys = {}
-
-pluginKeys.mapLSP = function(mapbuf)
-  -- rename
-  --[[
-  --Lspsaga 替换 rn
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
- ]]
-  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-  -- code action
-  --[[
-  Lspsaga 替换 ca
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  --]]
-  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-  -- go xx
-  --[[
-    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  --]]
-  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
-  --[[
-  Lspsaga 替换 gh
-  mapbuf("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  --]]
-  mapbuf("n", "K", "<cmd>Lspsaga hover_doc<cr>", opt)
-  --[[
-  Lspsaga 替换 gr
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  --]]
-  mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
-  --[[
-  Lspsaga 替换 gp, gj, gk
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  --]]
-  -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-  -- 未用
-  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-  -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-  -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-  -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
-end
-
--- lsp 回调函数快捷键设置
-
-
-pluginKeys.cmp = function(cmp)
-  local luasnip = require('luasnip')
-  local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-  end
-
-  return {
-    -- 上一个
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    -- 下一个
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    -- 出现补全
-    ["<C-<space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    -- 取消
-    ["<C-e>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    -- 确认
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({
-      select = true,
-      behavior = cmp.ConfirmBehavior.Replace,
-    }),
-    -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    -- 如果窗口内容太多，可以滚动
-	 ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-	
-
-    -- super Tab
-        ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-        ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    -- end of super Tab
-  }
-end
-
-return pluginKeys
-
+-- NvimTree
+--map <C-n> :NvimTreeToggle<CR>
+map("n","<C-n>",":NvimTreeToggle<CR>", opt)
+map("i","<C-n>",":NvimTreeToggle<CR>", opt)
+map("v","<C-n>",":NvimTreeToggle<CR>", opt)
 
