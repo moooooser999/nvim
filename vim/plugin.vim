@@ -6,8 +6,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'f-person/auto-dark-mode.nvim'
 Plug 'edkolev/tmuxline.vim'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'konfekt/fastfold'
@@ -34,6 +32,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'jiangmiao/auto-pairs'
 Plug 'zenbro/mirror.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'lyokha/vim-xkbswitch'
 call plug#end()
 
 

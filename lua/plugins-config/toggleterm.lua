@@ -9,8 +9,8 @@ require("toggleterm").setup{
   end,
   open_mapping = [[<c-\>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
-  shade_terminals= true,
-  shading_factor=2,
+  shade_terminals= false,
+  shading_factor=0,
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
   persist_size = true,

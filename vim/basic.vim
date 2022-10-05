@@ -1,4 +1,5 @@
 
+
 " Basic Setup
 set nocompatible
 set number
@@ -41,6 +42,7 @@ nnoremap <Leader>cl :set cursorline! cursorcolumn!<CR>
 "Fold
 set foldmethod=syntax
 set foldlevelstart=1
+set pumblend=20
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -62,6 +64,7 @@ noremap <Leader>P "+p
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 "wrap file
 au FileType markdown set wrap
 au FileType text set wrap

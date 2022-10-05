@@ -32,7 +32,7 @@ let g:mkdp_open_ip = ''
 
 " specify browser to open preview page
 " default: ''
-let g:mkdp_browser = 'safari'
+let g:mkdp_browser = 'min'
 
 " set to 1, echo preview page url in command line when open preview page
 " default is 0

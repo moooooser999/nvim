@@ -72,6 +72,7 @@ return require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim',
 	  requires = { {'nvim-lua/plenary.nvim'}}
 }
+	--use { 'nvim-telescope/telescope-fzy-native.nvim' }
 	use {"akinsho/toggleterm.nvim", tag = 'v2.*',}
 	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 	use {
@@ -80,6 +81,18 @@ return require('packer').startup(function(use)
 	}
 	-- indent缩进线
 	use "lukas-reineke/indent-blankline.nvim"
+	use { "xiyaowong/nvim-transparent" }
+	-- Lua
+	use {
+	  "folke/zen-mode.nvim",
+	  config = function()
+		require("zen-mode").setup {
+		  -- your configuration comes here
+		  -- or leave it empty to use the default settings
+		  -- refer to the configuration section below
+		}
+	  end
+	}
 
 end
 	)

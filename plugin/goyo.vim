@@ -15,5 +15,5 @@
 "Goyo 50%+25%x50%-25%
 nnoremap <leader>gy :Goyo 120<CR>
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+"autocmd! User GoyoEnter Limelight
+"autocmd! User GoyoLeave Limelight!

@@ -4,6 +4,7 @@ so ~/.vim/vim/basic.vim
 so ~/.vim/vim/plugin.vim
 
 
+
 "
 
 colorscheme nord
@@ -21,6 +22,7 @@ require('plugins-config.telekasten')
 require('plugins-config.lualine')
 require('plugins-config.indent-blankline')
 require('plugins-config.auto-dark-mode')
+require('plugins-config.transparent')
 --require('lsp.setup')
 --require('lsp.nvim-cmp')
 --require('lsp.ui')

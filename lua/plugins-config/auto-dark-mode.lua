@@ -5,6 +5,7 @@ require('auto-dark-mode').setup {
 		vim.cmd('colorscheme gruvbox')
 	end,
 	set_light_mode = function()
+		require('plugins-config.onenord')
 		vim.api.nvim_set_option('background', 'dark')
 		vim.cmd('colorscheme onenord')
 	end,

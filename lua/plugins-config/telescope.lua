@@ -34,13 +34,25 @@ require('telescope').setup{
 	color_devicons = true,
 	use_less = true,
 	path_display = {},
-	set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+	--set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
 	file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
 	grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
 	qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
 	-- Developer configurations: Not meant for general override
 	buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+	pickers = {
+	  find_files = {
+		find_command = {
+			"fd",
+			".",
+			"--type",
+			"file",
+			"--hidden",
+			"--strip-cwd-prefix"
+		}
+	  }
+  },
 	extensions = {
 		fzf = {
 		  fuzzy = true,                    -- false will only do exact matching

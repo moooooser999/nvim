@@ -89,7 +89,7 @@ map("n","<leader>$","<Cmd>BufferLineGoToBuffer -1<CR>",opt)
 --nnoremap <leader>th :ToggleTerm  size=15 direction=horizontal<CR>
 --nnoremap <leader>ot :ToggleTerm 
 map("n", "<leader>tf", ":ToggleTerm direction=float<CR>",opt)
-map("n", "<leader>tv", ":ToggleTerm size=80 direction=vertical<CR>",opt)
+map("n", "<leader>tv", ":ToggleTerm direction=vertical<CR>",opt)
 map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>",opt)
 map("n", "<leader>ot", ":ToggleTerm direction=float<CR>",opt)
 
@@ -166,4 +166,14 @@ map("n", "<leader>[", ":lua require('telekasten').insert_link()<cr>",opt)
 map("n","<C-n>",":NvimTreeToggle<CR>", opt)
 map("i","<C-n>",":NvimTreeToggle<CR>", opt)
 map("v","<C-n>",":NvimTreeToggle<CR>", opt)
+
+
+
+-- Zen Mode
+map("n", "<leader>zn", ":ZenMode<CR>", opt)
+
+-- Transparent
+map("n", "<leader>op", ":TransparentToggle<CR>",opt)
+
+
 
