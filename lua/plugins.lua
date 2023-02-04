@@ -1,13 +1,41 @@
 return require('packer').startup(function(use)
+    -- LSP
+    use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v1.x',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},             -- Required
+    {'williamboman/mason.nvim'},           -- Optional
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},         -- Required
+    {'hrsh7th/cmp-nvim-lsp'},     -- Required
+    {'hrsh7th/cmp-buffer'},       -- Optional
+    {'hrsh7th/cmp-path'},         -- Optional
+    {'saadparwaiz1/cmp_luasnip'}, -- Optional
+    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+    {'f3fora/cmp-spell'},
+
+    -- Snippets
+    {'L3MON4D3/LuaSnip'},             -- Required
+    {'rafamadriz/friendly-snippets'}, -- Optional
+  }
+}
+    --Copilot
+    use { "zbirenbaum/copilot.lua" }
+    use {
+  "zbirenbaum/copilot-cmp",
+  after = { "copilot.lua" },
+  config = function ()
+    require("copilot_cmp").setup{method = "getPanelCompletions",}
+            
+  end
+}
+
 	use 'wbthomason/packer.nvim'
 	-- LSP config
-	use {
-    "williamboman/nvim-lsp-installer",
-    "neovim/nvim-lspconfig",
-}
-	use "folke/lsp-colors.nvim"
-	use("b0o/schemastore.nvim")
-	use("folke/lua-dev.nvim")
 	use {
   "ahmedkhalf/project.nvim",
   config = function()
@@ -22,30 +50,9 @@ return require('packer').startup(function(use)
 		  update_cwd = true}
     }end}
 	-- 基于neovim 内置lsp 的轻量级lsp 插件，具有高性能UI。非常酷
-	use{ 'kkharji/lspsaga.nvim' }  -- nightly
-	use {
-	"hrsh7th/nvim-cmp",
-	requires = {
-	"hrsh7th/cmp-nvim-lsp", --neovim 内置 LSP 客户端的 nvim-cmp 源
-	--以下插件可选，可以根据个人喜好删减
-	"onsails/lspkind-nvim", --美化自动完成提示信息
-	"hrsh7th/cmp-nvim-lua", --nvim-cmp source for neovim Lua API.
-	"hrsh7th/cmp-path", --自动提示硬盘上的文件
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-cmdline"
-
-	}
-	}
 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
 	-- 代码段提示
-	use {
-	"L3MON4D3/LuaSnip",
-	requires = {
-	"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-	"rafamadriz/friendly-snippets" --代码段合集
-	}
-	}
 	-- Lua
 	use {
 	  "folke/todo-comments.nvim",
@@ -58,7 +65,10 @@ return require('packer').startup(function(use)
 		
 	  end
 	}
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+     use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 	use {
 	  'kyazdani42/nvim-tree.lua',requires = {'kyazdani42/nvim-web-devicons', -- optional, for file icons
 	},
@@ -81,8 +91,7 @@ return require('packer').startup(function(use)
 	}
 	-- indent缩进线
 	use "lukas-reineke/indent-blankline.nvim"
-	use { "xiyaowong/nvim-transparent" }
-	-- Lua
+		-- Lua
 	use {
 	  "folke/zen-mode.nvim",
 	  config = function()
@@ -93,6 +102,51 @@ return require('packer').startup(function(use)
 		}
 	  end
 	}
+    use { 'mhartington/formatter.nvim' }
+    use {'nvim-lua/lsp-status.nvim'}
+    -- Lua
+    use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+    use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+    use {'rcarriga/nvim-notify'}
+    use({
+  "dnlhc/glance.nvim",
+  config = function()
+    require('glance').setup({
+      -- your configuration
+    })
+  end,
+})
+    use {
+  'lewis6991/gitsigns.nvim',
+  -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+}
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 
 end
 	)

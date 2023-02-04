@@ -14,7 +14,6 @@ set hidden
 set mouse+=a
 set path+=**
 set t_Co=256
-set autoindent
 set cindent
 set smartindent
 set nowrap
@@ -37,12 +36,13 @@ set noerrorbells visualbell t_vb=
 "let &t_SI = "\e[6 q" 
 "let &t_EI = "\e[2 q"
 " Set cursorline
-set cursorline cursorcolumn
+set cursorline 
 nnoremap <Leader>cl :set cursorline! cursorcolumn!<CR>
 "Fold
 set foldmethod=syntax
 set foldlevelstart=1
-set pumblend=20
+set pumblend=0
+set winblend=0
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -54,10 +54,6 @@ let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML" This setting makes search case-insensitive when all characters in the string
 
 let mapleader=" "
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
 
 "tab
 
@@ -95,3 +91,6 @@ function! InsertMapForEnter()
         return "\<CR>"
     endif
 endfunction
+filetype on
+filetype plugin on
+filetype indent on
