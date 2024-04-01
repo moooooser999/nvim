@@ -1,0 +1,1 @@
+return { "wookayin/vim-typora" }
