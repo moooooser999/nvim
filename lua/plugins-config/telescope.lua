@@ -11,6 +11,9 @@ require('telescope').setup{
 	  '--smart-case'
 	},
 	prompt_prefix = "> ",
+    preview = {
+        treesitter = false,
+    },
 	selection_caret = "> ",
 	entry_prefix = "  ",
 	initial_mode = "insert",
@@ -64,8 +67,10 @@ require('telescope').setup{
 		coc = { theme = 'dropdown' }
   }
   },
-  require('telescope').load_extension('fzf'),
-	require('telescope').load_extension('projects'),
+    require('telescope').load_extension('fzf'),
+	-- require('telescope').load_extension('projects'),
+    -- This will load fzy_native and have it override the default file sorter
+    require('telescope').load_extension('fzy_native')
 	}
 
 

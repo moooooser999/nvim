@@ -37,6 +37,7 @@ set noerrorbells visualbell t_vb=
 "let &t_EI = "\e[2 q"
 " Set cursorline
 set cursorline 
+set cursorcolumn
 nnoremap <Leader>cl :set cursorline! cursorcolumn!<CR>
 "Fold
 set foldmethod=syntax
@@ -76,6 +77,7 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+set autochdir
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Autoindent
@@ -94,3 +96,4 @@ endfunction
 filetype on
 filetype plugin on
 filetype indent on
+
