@@ -17,3 +17,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { ui = { border = "rounded" } })
 vim.g.maplocalleader = " "
+
+-- set bg to transparent
+vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
