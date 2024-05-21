@@ -1,4 +1,7 @@
 -- set leader key
+--
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -22,12 +25,12 @@ map("n", "<leader>P", '"+p', { desc = "Paste from ClipBoard" })
 map("n", "<leader>mm", ":MinimapToggle<CR>", { desc = "Copy to ClipBoard" })
 map("n", "<leader>mr", ":MinimapRefresh<CR>", { desc = "Copy to ClipBoard" })
 
-map("n", "<A-k>", [[:m .-2<cr>==]], opt, { desc = "Move Line Up" })
-map("n", "<A-j>", [[:m .+1<cr>==]], opt, { desc = "Move Line Down" })
-map("v", "<A-k>", [[:m '<-2<cr>gv=gv]], opt, { desc = "Move Line Up" })
-map("v", "<A-j>", [[:m '>+1<cr>gv=gv]], opt, { desc = "Move Line Down" })
-map("i", "<A-k>", [[:m .-2<cr>=gi]], opt, { desc = "Move Line Up" })
-map("i", "<A-j>", [[:m .+1<cr>=gi]], opt, { desc = "Move Line Down" })
+-- map("n", "<A-k>", [[:m .-2<cr>==]], opt, { desc = "Move Line Up" })
+-- map("n", "<A-j>", [[:m .+1<cr>==]], opt, { desc = "Move Line Down" })
+-- map("v", "<A-k>", [[:m '<-2<cr>gv=gv]], opt, { desc = "Move Line Up" })
+-- map("v", "<A-j>", [[:m '>+1<cr>gv=gv]], opt, { desc = "Move Line Down" })
+-- map("i", "<A-k>", [[:m .-2<cr>=gi]], opt, { desc = "Move Line Up" })
+-- map("i", "<A-j>", [[:m .+1<cr>=gi]], opt, { desc = "Move Line Down" })
 -- Tabs
 map("n", "<C-t>", [[:tabnew<cr>]], opt, { desc = "New Tab" })
 -- tab key

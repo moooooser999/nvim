@@ -216,7 +216,7 @@ local plugins = {
 			-- vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
 		end,
 	},
-	"f-person/auto-dark-mode.nvim",
+	-- "f-person/auto-dark-mode.nvim",
 	"renerocksai/calendar-vim",
 	"nvim-lua/plenary.nvim",
 	{
@@ -400,10 +400,16 @@ local plugins = {
 			nvim_tmux_nav.setup({
 				disable_when_zoomed = true, -- defaults to false
 			})
-			vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-			vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-			vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-			vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+			vim.keymap.set(
+				"n",
+				"<leader>mh",
+				":NvimTmuxNavigateLeftMirrorCR>",
+				{ silent = true },
+				{ desc = "Navigate left" }
+			)
+			vim.keymap.set("n", "<leader>mj", ":NvimTmuxNavigateDown", { silent = true }, { desc = "Navigate down" })
+			vim.keymap.set("n", "<leader>mk", ":NvimTmuxNavigateUp", { silent = true }, { desc = "Navigate up" })
+			vim.keymap.set("n", "<leader>ml", ":NvimTmuxNavigateRight", { silent = true }, { desc = "Navigate right" })
 		end,
 	},
 	{
