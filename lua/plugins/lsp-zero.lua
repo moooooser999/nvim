@@ -52,6 +52,7 @@ return {
                 { name = "copilot",  keyword_length = 1 },
                 { name = "buffer",   keyword_length = 3 },
                 { name = "luasnip",  keyword_length = 2 },
+                -- { name = "supermaven", keyword_length = 0 },
             },
             formatting = {
                 -- changing the order of fields so the icon is the first
@@ -67,6 +68,7 @@ return {
                         nvim_lua = "Π",
                         copilot = "",
                         spell = "S",
+                        -- supermaven = "",
                     }
                     local kind_icons = {
                         Text = "",

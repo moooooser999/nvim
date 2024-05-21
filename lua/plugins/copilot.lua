@@ -19,11 +19,11 @@ return {
 				},
 			},
 			suggestion = {
-				enabled = true,
-				auto_trigger = true,
+				enabled = false,
+				auto_trigger = false,
 				debounce = 75,
 				keymap = {
-					accept = "<C-p>",
+					accept = "<C-Space>",
 					accept_word = true,
 					accept_line = true,
 					next = "<C-L>",
