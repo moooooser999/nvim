@@ -11,11 +11,11 @@ map("n", "<C-u>", "9k", opt, { desc = "Scroll Up" })
 map("n", "<C-d>", "9j", opt, { desc = "Scroll Down" })
 
 -- Copy/Paste
-map("n", "<leader>y", '"*y', { desc = "Copy to ClipBoard" })
-map("n", "<leader>p", '"*p', { desc = "Paste from ClipBoard" })
-map("v", "<leader>y", '"*y', { desc = "Copy to ClipBoard" })
-map("v", "<leader>p", '"*p', { desc = "Paste from ClipBoard" })
-map("n", "<leader>Y", '"*y', { desc = "Append to ClipBoard" })
+map("n", "<leader>y", '"+y', { desc = "Copy to ClipBoard" })
+map("n", "<leader>p", '"+p', { desc = "Paste from ClipBoard" })
+map("v", "<leader>y", '"+y', { desc = "Copy to ClipBoard" })
+map("v", "<leader>p", '"+p', { desc = "Paste from ClipBoard" })
+map("n", "<leader>Y", '"+y', { desc = "Append to ClipBoard" })
 map("n", "<leader>P", '"+p', { desc = "Paste from ClipBoard" })
 
 --minimap
@@ -177,82 +177,52 @@ map("n", "<leader>op", ":TransparentToggle<CR>", { desc = "Toggle Transparent Mo
 
 -- Trouble
 vim.keymap.set(
-	"n",
-	"<leader>xx",
-	"<cmd>TroubleToggle<cr>",
-	{ silent = true, noremap = true, desc = "Toggle Error Analysis" }
+    "n",
+    "gr",
+    "<cmd>Trouble lsp_references<cr>",
+    { silent = true, noremap = true, desc = "[LSP] Reference" }
 )
 vim.keymap.set(
-	"n",
-	"<leader>xw",
-	"<cmd>TroubleToggle workspace_diagnostics<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Workspace]" }
+    "n",
+    "gd",
+    "<cmd>Lspsaga goto_definition<cr>",
+    { silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
 )
 vim.keymap.set(
-	"n",
-	"<leader>xd",
-	"<cmd>TroubleToggle document_diagnostics<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Documents]" }
+    "n",
+    "gD",
+    "<cmd>Lspsaga peek_definition<cr>",
+    { silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
 )
 vim.keymap.set(
-	"n",
-	"<leader>xl",
-	"<cmd>TroubleToggle loclist<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Local Lists]" }
+    "n",
+    "gi",
+    "<cmd>Trouble Toggle lsp_implementations<cr>",
+    { silent = true, noremap = true, desc = "[LSP] Implementations" }
 )
 vim.keymap.set(
-	"n",
-	"<leader>xq",
-	"<cmd>TroubleToggle quickfix<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Toggle Quick Fix" }
+    "n",
+    "<leader>rn",
+    "<cmd>lua vim.lsp.buf.rename()<cr>",
+    { silent = true, noremap = true, desc = "[LSP] Rename" }
 )
 vim.keymap.set(
-	"n",
-	"gr",
-	"<cmd>TroubleToggle lsp_references<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Reference" }
+    "n",
+    "<leader>lo",
+    "<cmd> Lspsaga outline<cr>",
+    { silent = true, noremap = true, desc = "[LSP] Outline" }
 )
 vim.keymap.set(
-	"n",
-	"gd",
-	"<cmd>Lspsaga goto_definition<cr>",
-	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
+    "n",
+    "<leader>ca",
+    "<cmd> Lspsaga code_action<cr>",
+    { silent = true, noremap = true, desc = "[LSP] Code Action" }
 )
 vim.keymap.set(
-	"n",
-	"gD",
-	"<cmd>Lspsaga peek_definition<cr>",
-	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
-)
-vim.keymap.set(
-	"n",
-	"gi",
-	"<cmd>TroubleToggle lsp_implementations<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Implementations" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>rn",
-	"<cmd>lua vim.lsp.buf.rename()<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Rename" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>lo",
-	"<cmd> Lspsaga outline<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Outline" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>ca",
-	"<cmd> Lspsaga code_action<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Code Action" }
-)
-vim.keymap.set(
-	"n",
-	"K",
-	"<cmd> Lspsaga hover_doc<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] range code action" }
+    "n",
+    "K",
+    "<cmd> Lspsaga hover_doc<cr>",
+    { silent = true, noremap = true, desc = "[LSP] range code action" }
 )
 vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, noremap = true, desc = "[LSP] Finder" })
 -- Copilot Chat
@@ -269,10 +239,10 @@ vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, n
 -- }
 -- Map the above keymap
 local quick_chat = function()
-	local input = vim.fn.input("Quick Chat: ")
-	if input ~= "" then
-		require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-	end
+    local input = vim.fn.input("Quick Chat: ")
+    if input ~= "" then
+        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+    end
 end
 -- quick chat
 vim.keymap.set("n", "<leader>ccq", quick_chat, { silent = true, noremap = true, desc = "CopilotChat - Quick chat" })
@@ -280,28 +250,39 @@ vim.keymap.set("n", "<leader>ccq", quick_chat, { silent = true, noremap = true, 
 vim.keymap.set("n", "<leader>ccf", "<cmd>CopilotChatFix<cr>", { silent = true, noremap = true, desc = "Copilot - Fix" })
 -- explain
 vim.keymap.set(
-	"n",
-	"<leader>ccx",
-	"<cmd>CopilotChatExplain<cr>",
-	{ silent = true, noremap = true, desc = "Copilot - Explain" }
+    "n",
+    "<leader>ccx",
+    "<cmd>CopilotChatExplain<cr>",
+    { silent = true, noremap = true, desc = "Copilot - Explain" }
 )
 -- commit
 vim.keymap.set(
-	"n",
-	"<leader>ccc",
-	"<cmd>CopilotChatCommit<cr>",
-	{ silent = true, noremap = true, desc = "Copilot - Commit" }
+    "n",
+    "<leader>ccc",
+    "<cmd>CopilotChatCommit<cr>",
+    { silent = true, noremap = true, desc = "Copilot - Commit" }
 )
 -- write doc
 vim.keymap.set(
-	"n",
-	"<leader>ccw",
-	"<cmd>CopilotChatDocs<cr>",
-	{ silent = true, noremap = true, desc = "Copilot - Write Docs" }
+    "n",
+    "<leader>ccw",
+    "<cmd>CopilotChatDocs<cr>",
+    { silent = true, noremap = true, desc = "Copilot - Write Docs" }
 )
 vim.keymap.set(
-	"n",
-	"<leader>cct",
-	"<cmd>CopilotChatTests<cr>",
-	{ silent = true, noremap = true, desc = "Copilot - Test" }
+    "n",
+    "<leader>cct",
+    "<cmd>CopilotChatTests<cr>",
+    { silent = true, noremap = true, desc = "Copilot - Test" }
 )
+-- Obsidian
+map("n", "<leader>ob", ":ObsidianBacklinks<cr>", { desc = "Open Obsidian Backlinks" })
+map("n", "<leader>ot", ":ObsidianTags<cr>", { desc = "Open Obsidian Tags" })
+map("n", "<leader>os", ":ObsidianSearch<cr>", { desc = "Search Obsidian Notes" })
+map("n", "<leader>oc", ":ObsidianNew<cr>", { desc = "Create New Note" })
+map("n", "<leader>or", ":ObsidianRename<cr>", { desc = "Rename Note" })
+map("n", "<leader>oci", ":ObsidianRename<cr>2 - Index/%", { desc = "Rename Note" })
+
+-- noice
+map("n", "<leader>nn", ":lua require('notify').dismiss({ silent = true, pending = true }<cr>)",
+    { desc = "Open Noice Cmdline" })
