@@ -1,5 +1,3 @@
-
-
 " Basic Setup
 set nocompatible
 set number
@@ -37,6 +35,7 @@ set noerrorbells visualbell t_vb=
 "let &t_EI = "\e[2 q"
 " Set cursorline
 set cursorline 
+set cursorcolumn
 nnoremap <Leader>cl :set cursorline! cursorcolumn!<CR>
 "Fold
 set foldmethod=syntax
@@ -76,21 +75,23 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+set autochdir
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Autoindent
-inoremap <expr> <CR> InsertMapForEnter()
-function! InsertMapForEnter()
-    if pumvisible()
-        return "\<C-y>"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
-        return "\<CR>\<Esc>O"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
-        return "\<CR>\<Esc>O"
-    else
-        return "\<CR>"
-    endif
-endfunction
+" inoremap <expr> <CR> InsertMapForEnter()
+" function! InsertMapForEnter()
+"     if pumvisible()
+"         return "\<C-y>"
+"     elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+"         return "\<CR>\<Esc>O"
+"     elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+"         return "\<CR>\<Esc>O"
+"     else
+"         return "\<CR>"
+"     endif
+" endfunction
 filetype on
 filetype plugin on
 filetype indent on
+
