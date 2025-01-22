@@ -1,7 +1,8 @@
 return {
-	"lyokha/vim-xkbswitch",
+	"ivanesmantovich/xkbswitch.nvim",
+	ft = "markdown",
+	version = false,
 	config = function()
-		vim.g.XkbSwitchEnabled = 1
-		vim.g.XkbSwitchLib = "/usr/local/lib/libxkbswitch.dylib"
+		require("xkbswitch").setup()
 	end,
 }

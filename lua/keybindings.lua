@@ -70,8 +70,9 @@ map("n", "<leader>-", ":vertical resize -5<cr>", { desc = "Resize Window [-]" })
 --nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
 --nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 --nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
---nnoremap <C-w> :bdelete! %d<cr>
-map("n", "<C-w>", ":Markview disable <cr>:bdelete!<cr>:Markview enable<cr>", { desc = "Close Buffer" })
+-- nnoremap <C-w> :bdelete! %d<cr>
+-- map("n", "<C-w>", ":Markview disable <cr>:bdelete!<cr>:Markview enable<cr>", { desc = "Close Buffer" })
+map("n", "<C-w>", ":bdelete!<cr>", { desc = "Close Buffer" })
 map("n", "<leader>l", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
 map("n", "<leader>h", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
 -- map("n", "<M-l>", ":BufferLineMoveNext<CR>", { desc = "Move Buffer to the Next" })
@@ -177,82 +178,82 @@ map("n", "<leader>op", ":TransparentToggle<CR>", { desc = "Toggle Transparent Mo
 
 -- Trouble
 vim.keymap.set(
-    "n",
-    "<leader>xx",
-    "<cmd>Trouble diagnostics toggle<cr>",
-    { silent = true, noremap = true, desc = "Toggle Error Analysis" }
+	"n",
+	"<leader>xx",
+	"<cmd>Trouble diagnostics toggle<cr>",
+	{ silent = true, noremap = true, desc = "Toggle Error Analysis" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>xw",
-    "<cmd>TroubleToggle workspace_diagnostics<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Workspace]" }
+	"n",
+	"<leader>xw",
+	"<cmd>TroubleToggle workspace_diagnostics<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Workspace]" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>xd",
-    "<cmd>Trouble diagnostics toggle filter.buf=0<cr><cr>",
-    { silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Documents]" }
+	"n",
+	"<leader>xd",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<cr><cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Documents]" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>xl",
-    "<cmd>TroubleToggle loclist<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Local Lists]" }
+	"n",
+	"<leader>xl",
+	"<cmd>TroubleToggle loclist<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Toggle Error Analysis [Local Lists]" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>xq",
-    "<cmd>TroubleToggle quickfix<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Toggle Quick Fix" }
+	"n",
+	"<leader>xq",
+	"<cmd>TroubleToggle quickfix<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Toggle Quick Fix" }
 )
 vim.keymap.set(
-    "n",
-    "gr",
-    "<cmd>Trouble lsp toggle focus=false win.position=right<<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Reference" }
+	"n",
+	"gr",
+	"<cmd>Trouble lsp_references focus=false win.position=right<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Reference" }
 )
 vim.keymap.set(
-    "n",
-    "gd",
-    "<cmd>Lspsaga goto_definition<cr>",
-    { silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
+	"n",
+	"gd",
+	"<cmd>Lspsaga goto_definition<cr>",
+	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
 )
 vim.keymap.set(
-    "n",
-    "gD",
-    "<cmd>Lspsaga peek_definition<cr>",
-    { silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
+	"n",
+	"gD",
+	"<cmd>Lspsaga peek_definition<cr>",
+	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
 )
 vim.keymap.set(
-    "n",
-    "gi",
-    "<cmd>TroubleToggle lsp_implementations<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Implementations" }
+	"n",
+	"gi",
+	"<cmd>TroubleToggle lsp_implementations<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Implementations" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>rn",
-    "<cmd>lua vim.lsp.buf.rename()<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Rename" }
+	"n",
+	"<leader>rn",
+	"<cmd>lua vim.lsp.buf.rename()<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Rename" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>lo",
-    "<cmd> Lspsaga outline<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Outline" }
+	"n",
+	"<leader>lo",
+	"<cmd> Lspsaga outline<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Outline" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>ca",
-    "<cmd> Lspsaga code_action<cr>",
-    { silent = true, noremap = true, desc = "[LSP] Code Action" }
+	"n",
+	"<leader>ca",
+	"<cmd> Lspsaga code_action<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] Code Action" }
 )
 vim.keymap.set(
-    "n",
-    "K",
-    "<cmd> Lspsaga hover_doc<cr>",
-    { silent = true, noremap = true, desc = "[LSP] range code action" }
+	"n",
+	"K",
+	"<cmd> Lspsaga hover_doc<cr>",
+	{ silent = true, noremap = true, desc = "[LSP] range code action" }
 )
 vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, noremap = true, desc = "[LSP] Finder" })
 -- Copilot Chat
@@ -269,10 +270,10 @@ vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, n
 -- }
 -- Map the above keymap
 local quick_chat = function()
-    local input = vim.fn.input("Quick Chat: ")
-    if input ~= "" then
-        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-    end
+	local input = vim.fn.input("Quick Chat: ")
+	if input ~= "" then
+		require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+	end
 end
 -- quick chat
 vim.keymap.set("n", "<leader>ccq", quick_chat, { silent = true, noremap = true, desc = "CopilotChat - Quick chat" })
@@ -280,30 +281,30 @@ vim.keymap.set("n", "<leader>ccq", quick_chat, { silent = true, noremap = true, 
 vim.keymap.set("n", "<leader>ccf", "<cmd>CopilotChatFix<cr>", { silent = true, noremap = true, desc = "Copilot - Fix" })
 -- explain
 vim.keymap.set(
-    "n",
-    "<leader>ccx",
-    "<cmd>CopilotChatExplain<cr>",
-    { silent = true, noremap = true, desc = "Copilot - Explain" }
+	"n",
+	"<leader>ccx",
+	"<cmd>CopilotChatExplain<cr>",
+	{ silent = true, noremap = true, desc = "Copilot - Explain" }
 )
 -- commit
 vim.keymap.set(
-    "n",
-    "<leader>ccc",
-    "<cmd>CopilotChatCommit<cr>",
-    { silent = true, noremap = true, desc = "Copilot - Commit" }
+	"n",
+	"<leader>ccc",
+	"<cmd>CopilotChatCommit<cr>",
+	{ silent = true, noremap = true, desc = "Copilot - Commit" }
 )
 -- write doc
 vim.keymap.set(
-    "n",
-    "<leader>ccw",
-    "<cmd>CopilotChatDocs<cr>",
-    { silent = true, noremap = true, desc = "Copilot - Write Docs" }
+	"n",
+	"<leader>ccw",
+	"<cmd>CopilotChatDocs<cr>",
+	{ silent = true, noremap = true, desc = "Copilot - Write Docs" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>cct",
-    "<cmd>CopilotChatTests<cr>",
-    { silent = true, noremap = true, desc = "Copilot - Test" }
+	"n",
+	"<leader>cct",
+	"<cmd>CopilotChatTests<cr>",
+	{ silent = true, noremap = true, desc = "Copilot - Test" }
 )
 -- Obsidian
 map("n", "<leader>ob", ":ObsidianBacklinks<cr>", { desc = "Open Obsidian Backlinks" })
