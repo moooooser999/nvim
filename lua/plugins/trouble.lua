@@ -5,12 +5,12 @@ return {
 	keys = {
 		{
 			"<leader>xx",
-			"<cmd>Trouble diagnostics toggle win = { type = 'split', position='right', size=50 }<cr>",
+			"<cmd>Trouble diagnostics toggle<cr>",
 			desc = "Diagnostics (Trouble)",
 		},
 		{
 			"<leader>xX",
-			"<cmd>Trouble diagnostics toggle filter.buf=0 win = { type = 'split', position='right', size=50}<cr>",
+			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{

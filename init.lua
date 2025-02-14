@@ -2,6 +2,7 @@
 require("basic")
 -- load key mappings
 require("keybindings")
+-- load tabline
 -- plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -44,3 +45,5 @@ local function toggle_profile()
   end
 end
 vim.keymap.set("", "<f1>", toggle_profile)
+-- set basckground to transparent
+

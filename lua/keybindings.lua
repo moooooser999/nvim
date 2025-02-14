@@ -104,7 +104,8 @@ map("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "Toggle 
 --nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 --nnoremap <leader>fb <cmd>Telescope buffers<cr>
 --nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find Files" })
+map("n", "<leader>fc", ":Telescope find_files<cr>", { desc = "Find Files in Current Directory" })
+map("n", "<leader>ff", ":lua require('telescope.builtin').find_files( { cwd = vim.fn.systemlist(\"git rev-parse --show-toplevel\")[1]})<cr>", { desc = "Find Files in Working Directory" })
 map("n", "<leader>fg", ":Telescope live_grep<cr>", { desc = "Live Grep" })
 map("n", "<leader>fb", ":Telescope buffers<cr>", { desc = "Find Buffer" })
 map("n", "<leader>fh", ":Telescope help_tags<cr>", { desc = "Find Tags" })
@@ -210,7 +211,7 @@ vim.keymap.set(
 vim.keymap.set(
 	"n",
 	"gr",
-	"<cmd>Trouble lsp_references focus=false win.position=right<cr>",
+	"<cmd>Trouble lsp_references<cr>",
 	{ silent = true, noremap = true, desc = "[LSP] Reference" }
 )
 vim.keymap.set(

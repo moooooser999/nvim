@@ -49,14 +49,7 @@ return {
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 				pickers = {
 					find_files = {
-						find_command = {
-							"fd",
-							".",
-							"--type",
-							"file",
-							"--hidden",
-							"--strip-cwd-prefix",
-						},
+						find_command = { "fd", "--hidden", "--glob", ""},
 					},
 				},
 				extensions = {

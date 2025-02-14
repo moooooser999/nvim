@@ -68,7 +68,6 @@ return {
 
 		local cmp = require("cmp")
 		local cmp_action = lsp_zero.cmp_action()
-		local cmp_format = lsp_zero.cmp_format()
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -76,7 +75,6 @@ return {
 		-- super_maven = require("supermaven-nvim")
 
 		cmp.setup({
-			formatting = cmp_format,
 			preselect = "item",
 			completion = {
 				completeopt = "menu,menuone,noinsert",

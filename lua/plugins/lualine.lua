@@ -26,7 +26,7 @@ return {
 					{
 						"diagnostics",
 						sources = { "nvim_lsp" },
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						symbols = { error = "", warn = " ", info = " ", hint = " " },
 					},
 					"encoding",
 					"fileformat",
@@ -43,7 +43,8 @@ return {
 				lualine_y = {},
 				lualine_z = {},
 			},
-			tabline = {},
+			tabline = {
+            },
 			extensions = {},
 		})
 	end,
