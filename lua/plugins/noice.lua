@@ -15,9 +15,12 @@ return {
 	config = function()
 		require("noice").setup({
 			routes = {
-				{
-					view = "notify",
-					filter = { event = "msg_showmode" },
+				filter = { event = "msg_show", kind = { "shell_out", "shell_err" } },
+				view = "split",
+				opts = {
+					level = "info",
+					skip = false,
+					replace = false,
 				},
 			},
 			sections = {

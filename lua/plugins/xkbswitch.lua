@@ -1,8 +1,8 @@
 return {
-	"ivanesmantovich/xkbswitch.nvim",
-	ft = "markdown",
-	version = false,
-	config = function()
-		require("xkbswitch").setup()
-	end,
+-- 	"ivanesmantovich/xkbswitch.nvim",
+-- 	ft = "markdown",
+-- 	version = false,
+-- 	config = function()
+-- 		require("xkbswitch").setup()
+-- 	end,
 }

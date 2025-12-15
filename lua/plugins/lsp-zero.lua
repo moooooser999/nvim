@@ -51,7 +51,39 @@ return {
 				end,
 			},
 		})
-
+		-- require("lspconfig").ruff.setup({
+		-- 	init_options = {
+		-- 		settings = {
+		-- 			-- Modification to any of these settings has no effect.
+		-- 			enable = true,
+		-- 			ignoreStandardLibrary = true,
+		-- 			organizeImports = true,
+		-- 			fixAll = true,
+		-- 			lint = {
+		-- 				enable = true,
+		-- 				run = "onType",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		-- require('lspconfig').pyright.setup({
+		--   single_file_support = true,
+		--   settings = {
+		--     pyright = {
+		--       disableLanguageServices = false,
+		--       disableOrganizeImports = false
+		--     },
+		--     python = {
+		--       analysis = {
+		--         autoImportCompletions = true,
+		--         autoSearchPaths = true,
+		--         diagnosticMode = "openFilesOnly", -- openFilesOnly, workspace
+		--         typeCheckingMode = "standard",    -- off, basic, strict
+		--         useLibraryCodeForTypes = true
+		--       }
+		--     }
+		--   }
+		-- })
 		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 		vim.diagnostic.config({
@@ -88,6 +120,7 @@ return {
 				{ name = "nvim_lua" },
 				{ name = "buffer", keyword_length = 3 },
 				{ name = "luasnip", keyword_length = 2 },
+				{ name = "copilot", keyword_length = 0, priority = 0 },
 			},
 			formatting = {
 				-- changing the order of fields so the icon is the first

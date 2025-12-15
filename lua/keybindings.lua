@@ -217,15 +217,15 @@ vim.keymap.set(
 vim.keymap.set(
 	"n",
 	"gd",
-	"<cmd>Lspsaga goto_definition<cr>",
+    "<cmd>Trouble lsp_definitions<cr>",
 	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
 )
-vim.keymap.set(
-	"n",
-	"gD",
-	"<cmd>Lspsaga peek_definition<cr>",
-	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
-)
+-- vim.keymap.set(
+-- 	"n",
+-- 	"gD",
+-- 	"<cmd>Lspsaga peek_definition<cr>",
+-- 	{ silent = true, noremap = true, desc = "[LSP]GoTo Definitions" }
+-- )
 vim.keymap.set(
 	"n",
 	"gi",
@@ -238,25 +238,25 @@ vim.keymap.set(
 	"<cmd>lua vim.lsp.buf.rename()<cr>",
 	{ silent = true, noremap = true, desc = "[LSP] Rename" }
 )
-vim.keymap.set(
-	"n",
-	"<leader>lo",
-	"<cmd> Lspsaga outline<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Outline" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>ca",
-	"<cmd> Lspsaga code_action<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] Code Action" }
-)
-vim.keymap.set(
-	"n",
-	"K",
-	"<cmd> Lspsaga hover_doc<cr>",
-	{ silent = true, noremap = true, desc = "[LSP] range code action" }
-)
-vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, noremap = true, desc = "[LSP] Finder" })
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<leader>lo",
+-- 	"<cmd> Lspsaga outline<cr>",
+-- 	{ silent = true, noremap = true, desc = "[LSP] Outline" }
+-- )
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<leader>ca",
+-- 	"<cmd> Lspsaga code_action<cr>",
+-- 	{ silent = true, noremap = true, desc = "[LSP] Code Action" }
+-- )
+-- vim.keymap.set(
+-- 	"n",
+-- 	"K",
+-- 	"<cmd> Lspsaga hover_doc<cr>",
+-- 	{ silent = true, noremap = true, desc = "[LSP] range code action" }
+-- )
+-- vim.keymap.set("n", "<leader>lf", "<cmd> Lspsaga finder<cr>", { silent = true, noremap = true, desc = "[LSP] Finder" })
 -- Copilot Chat
 
 --   {
@@ -314,3 +314,5 @@ map("n", "<leader>os", ":ObsidianSearch<cr>", { desc = "Search Obsidian Notes" }
 map("n", "<leader>oc", ":ObsidianNew<cr>", { desc = "Create New Note" })
 map("n", "<leader>or", ":ObsidianRename<cr>", { desc = "Rename Note" })
 map("n", "<leader>oci", ":ObsidianRename<cr>2 - Index/%", { desc = "Rename Note" })
+-- Whichkey
+map("n", "<leader>H", ":WhichKey<cr>", { desc = "Help?" })
